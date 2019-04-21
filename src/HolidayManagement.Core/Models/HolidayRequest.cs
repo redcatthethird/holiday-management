@@ -12,6 +12,8 @@ namespace HolidayManagement.Core.Models
 
         public HolidayRequestStatus Status { get; set; }
 
+        public string Comments { get; set; }
+
         public int EmployeeId { get; set; }
         
         public Employee Employee { get; set; }

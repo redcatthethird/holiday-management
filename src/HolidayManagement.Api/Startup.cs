@@ -1,4 +1,6 @@
-﻿using HolidayManagement.DataAccess.Contexts;
+﻿using HolidayManagement.DataAccess;
+using HolidayManagement.DataAccess.Contexts;
+using HolidayManagement.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -29,14 +31,11 @@ namespace HolidayManagement.Api
             });
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
-            var assemblyName = typeof(Startup).Assembly.FullName;
-            var connection = "Data Source=blogging.db";
-            services.AddDbContext<HolidayContext>(options =>
-                options.UseSqlite(
-                    connection
-                    //, builder => builder.MigrationsAssembly(assemblyName)
-                    ));
+            
+            services
+                .AddContext("blogging.db")
+                .AddRepositories()
+                .AddServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

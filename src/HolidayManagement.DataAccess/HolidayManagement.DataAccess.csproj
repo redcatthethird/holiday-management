@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HolidayManagement.Core\HolidayManagement.Core.csproj" />
+    <ProjectReference Include="..\HolidayManagement.DataAccess.Interfaces\HolidayManagement.DataAccess.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

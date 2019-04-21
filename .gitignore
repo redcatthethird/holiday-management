@@ -313,3 +313,6 @@ __pycache__/
 
 # sqlite databases
 *.db
+
+# npm package lock file
+**/package-lock.json

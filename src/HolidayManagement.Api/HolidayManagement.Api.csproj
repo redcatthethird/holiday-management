@@ -13,6 +13,8 @@
   <ItemGroup>
     <ProjectReference Include="..\HolidayManagement.Core\HolidayManagement.Core.csproj" />
     <ProjectReference Include="..\HolidayManagement.DataAccess\HolidayManagement.DataAccess.csproj" />
+    <ProjectReference Include="..\HolidayManagement.Services.Interfaces\HolidayManagement.Services.Interfaces.csproj" />
+    <ProjectReference Include="..\HolidayManagement.Services\HolidayManagement.Services.csproj" />
   </ItemGroup>
 
 </Project>
