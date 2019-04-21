@@ -2,33 +2,38 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 
-import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { AppComponent, NavMenuComponent } from './layout';
+import { AppRoutingModule } from './app-routing.module';
+import {
+  EmployeesComponent,
+  PendingRequestsComponent,
+  MyHolidaysComponent
+} from './components';
+import { Helpers, AdminGuard } from './helpers';
+import { EmployeeService } from './services';
+import { AppConfig } from './config/config';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent
+    EmployeesComponent,
+    PendingRequestsComponent,
+    MyHolidaysComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-    ])
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    Helpers,
+    AdminGuard,
+    AppConfig,
+    EmployeeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

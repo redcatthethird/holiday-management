@@ -8,15 +8,18 @@
       </button>
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]='{"show": isExpanded}'>
         <ul class="navbar-nav flex-grow">
-          <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-            <a class="nav-link text-dark" [routerLink]='["/"]'>Home</a>
+          <li class="nav-item" [routerLinkActive]='["link-active"]'
+          [routerLinkActiveOptions]='{ exact: true }' queryParamsHandling="merge">
+            <a class="nav-link text-dark" [routerLink]='["/"]'>My holidays</a>
           </li>
-          <li class="nav-item" [routerLinkActive]='["link-active"]'>
-            <a class="nav-link text-dark" [routerLink]='["/counter"]'>Counter</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]='["link-active"]'>
-            <a class="nav-link text-dark" [routerLink]='["/fetch-data"]'>Fetch data</a>
-          </li>
+          <ng-template [ngIf]="admin">
+            <li class="nav-item" [routerLinkActive]='["link-active"]' queryParamsHandling="merge">
+              <a class="nav-link text-dark" [routerLink]='["/pending-requests"]'>Pending requests</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]='["link-active"]' queryParamsHandling="merge">
+              <a class="nav-link text-dark" [routerLink]='["/employees"]'>Employees</a>
+            </li>
+          </ng-template>
         </ul>
       </div>
     </div>

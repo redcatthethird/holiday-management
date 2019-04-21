@@ -1,6 +1,5 @@
 using HolidayManagement.Core.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 
 namespace HolidayManagement.DataAccess.Contexts
 {

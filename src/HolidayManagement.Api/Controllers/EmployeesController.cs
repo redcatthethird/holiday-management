@@ -1,8 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using HolidayManagement.Core.Models;
+using HolidayManagement.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace HolidayManagement.Api.Controllers
 {
@@ -10,36 +10,17 @@ namespace HolidayManagement.Api.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        // GET api/values
+        private readonly IEmployeeService service;
+
+        public EmployeesController(IEmployeeService service)
+            => this.service = service;
+
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        public Task<IEnumerable<Employee>> Get()
+            => service.GetEmployeesAsync();
 
-        // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        public Task<Employee> Get(int id)
+            => service.GetEmployeeAsync(id);
     }
 }
